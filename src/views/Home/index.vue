@@ -11,16 +11,35 @@
         <div class="header-search"></div>
       </a>
     </header>
+    <Swiper
+      :autoplay="2000"
+      :loop="true"
+      @change="changeHandler"
+    >
+      <SwiperItem>1</SwiperItem>
+      <SwiperItem>2</SwiperItem>
+      <SwiperItem>3</SwiperItem>
+    </Swiper>
+
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperItem } from "@/components/Swiper";
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    Swiper,
+    SwiperItem
+  },
+  methods: {
+    changeHandler (payload) {
+      console.log("index", payload);
+    }
+  }
 };
 </script>
-
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .page-home {
   display: flex;
   flex-direction: column;
