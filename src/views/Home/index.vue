@@ -11,21 +11,17 @@
         <div class="header-search"></div>
       </a>
     </header>
-    <Swiper
-      :autoplay="2000"
-      :loop="true"
-      @change="changeHandler"
-    >
+    <Swiper :autoplay="2000" :loop="true" @change="changeHandler">
       <SwiperItem>1</SwiperItem>
       <SwiperItem>2</SwiperItem>
       <SwiperItem>3</SwiperItem>
     </Swiper>
-
   </div>
 </template>
 
 <script>
 import { Swiper, SwiperItem } from "@/components/Swiper";
+import { getBanner } from "@/api/cartoon";
 export default {
   name: "Home",
   components: {
@@ -33,18 +29,49 @@ export default {
     SwiperItem
   },
   methods: {
-    changeHandler (payload) {
+    changeHandler(payload) {
       console.log("index", payload);
     }
+  },
+  created() {
+    /* // fetch('https://mhd.zhuishushenqi.com/comic_v2/getproad?apptype=8&appversion=1.0&channel=web-app&adgroupid=123')
+    //   .then(res => res.json())
+    //   .then(res => {
+    //     console.log(res);
+    //   })
+    fetch('http://localhost:8080/migu/today/')
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+      }) */
+
+    //下载轮播图的数据
+    getBanner().then(res => {
+      console.log(res);
+    });
   }
 };
 </script>
 <style lang="scss" scoped>
+@import "~@/assets/styles/mixins.scss";
 .page-home {
   display: flex;
   flex-direction: column;
   height: 100%;
   .index-header {
+    // border-bottom: 1px solid #ededed;
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 1px;
+    //   left: 0px;
+    //   bottom: 0px;
+    //   background-color: #ededed;
+    //   transform: scaleY(0.5);
+    // }
+    // position: relative;
+    @include border-bottom;
     display: flex;
     height: 44px;
     justify-content: space-between;

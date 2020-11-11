@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="swiper-container"
-    ref="swiper"
-  >
+  <div class="swiper-container" ref="swiper">
     <div class="swiper-wrapper">
       <slot></slot>
     </div>
@@ -26,7 +23,7 @@ export default {
       default: true
     }
   },
-  mounted () {
+  mounted() {
     var that = this;
     /* eslint-disable */
     new Swiper(this.$refs.swiper, {
