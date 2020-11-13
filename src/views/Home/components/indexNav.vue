@@ -1,6 +1,6 @@
 <template>
   <nav class="index-nav">
-    <a href="javascript:;">
+    <router-link to="/classify">
       <div class="nav-item">
         <!-- <i class="iconfont icon-icon_addmessage"></i> -->
         <svg class="icon" aria-hidden="true">
@@ -8,8 +8,8 @@
         </svg>
         <p class="nav-text font-24">分类</p>
       </div>
-    </a>
-    <a href="javascript:;">
+    </router-link>
+    <router-link to="/ranking">
       <div class="nav-item">
         <!-- <i class="iconfont icon-icon_addresslist"></i> -->
         <svg class="icon" aria-hidden="true">
@@ -17,8 +17,8 @@
         </svg>
         <p class="nav-text font-24">排行</p>
       </div>
-    </a>
-    <a href="javascript:;">
+    </router-link>
+    <router-link to="/vip">
       <div class="nav-item">
         <!-- <i class="iconfont icon-icon_addressbook"></i> -->
         <svg class="icon" aria-hidden="true">
@@ -26,8 +26,8 @@
         </svg>
         <p class="nav-text font-24">VIP专区</p>
       </div>
-    </a>
-    <a href="javascript:;">
+    </router-link>
+    <router-link to="/hello/history">
       <div class="nav-item">
         <!-- <i class="iconfont icon-icon_at"></i> -->
         <svg class="icon" aria-hidden="true">
@@ -35,7 +35,7 @@
         </svg>
         <p class="nav-text font-24">历史</p>
       </div>
-    </a>
+    </router-link>
   </nav>
 </template>
 

@@ -1,6 +1,6 @@
 // 专门处理漫画数据 相关的接口
 import request from "../utils/request";
-
+import { format } from "@/utils/apiHelp";
 /**
  * 获取轮播图的数据
  * https://mhd.zhuishushenqi.com/comic_v2/getproad?apptype=8&appversion=1.0&channel=web-app&adgroupid=123
@@ -30,5 +30,36 @@ export const getIndexRecommend = () => {
       channel: "web-app",
       viewtype: 1
     }
+  });
+};
+
+/* https://mhd.zhuishushenqi.com/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app */
+export const getTypes = () => {
+  return request({
+    url: "/api/comic_v2/getproad",
+    params: {
+      apptype: 8,
+      appversion: 1.0,
+      channel: "web-app",
+      adgroupid: 125
+    }
+  });
+};
+
+/* https://mhd.zhuishushenqi.com/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app */
+export const getTypesList = (subject, pageno = 1, pagesize = 20) => {
+  return request({
+    url: "/api/comic_v2/comicsfilterlist_v2",
+    method: "POST",
+    params: {
+      apptype: 8,
+      appversion: 1.0,
+      channel: "web-app"
+    },
+    data: format({
+      subject,
+      pageno,
+      pagesize
+    })
   });
 };

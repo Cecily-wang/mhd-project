@@ -3,18 +3,12 @@
     <div class="recommend-divide"></div>
     <div class="recommend-title">
       <div class="title-group">
-        <img
-          class="title-icon"
-          :src="info.icon"
-        />
+        <img class="title-icon" :src="info.icon" />
         <span class="title-text font-36">{{ info.name }}</span>
       </div>
       <span class="title-more font-24">更多 &gt;</span>
     </div>
-    <div
-      v-if="info.comicsviewtype === 1"
-      :class="`recommend-type-1`"
-    >
+    <div v-if="info.comicsviewtype === 1" :class="`recommend-type-1`">
       <div
         class="item"
         v-for="childItem in info.comicslist"
@@ -33,27 +27,18 @@
         </p>
       </div>
     </div>
-    <div
-      v-if="info.comicsviewtype === 5"
-      :class="`recommend-type-5`"
-    >
+    <div v-if="info.comicsviewtype === 5" :class="`recommend-type-5`">
       <div
         class="item"
         v-for="childItem in info.comicslist"
         :key="childItem.bigbook_id"
       >
-        <img
-          class="item-pic"
-          :src="childItem.coverurl"
-        />
+        <img class="item-pic" :src="childItem.coverurl" />
         <p class="item-name font-28">{{ childItem.bigbook_name }}</p>
         <p class="item-text font-24">{{ childItem.key_name }}</p>
       </div>
     </div>
-    <div
-      v-if="info.comicsviewtype === 3"
-      :class="`recommend-type-3`"
-    >
+    <div v-if="info.comicsviewtype === 3" :class="`recommend-type-3`">
       <div
         class="item"
         v-for="(childItem, childIndex) in info.comicslist"
@@ -70,9 +55,7 @@
           <p class="item-name font-30">{{ childItem.bigbook_name }}</p>
           <p class="item-hot font-24">
             人气：
-            <span class="hot-hot">{{
-              childItem.bigbookview | formatYi
-            }}</span>
+            <span class="hot-hot">{{ childItem.bigbookview | formatYi }}</span>
           </p>
           <p class="item-text font-24">{{ childItem.brief }}</p>
         </div>
@@ -89,7 +72,7 @@ export default {
       type: Object,
       require: true
     }
-  },
+  }
 };
 </script>
 
