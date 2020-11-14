@@ -14,7 +14,7 @@ import { getVIPList } from "@/api/cartoon";
 import { unformat } from "@/utils/apiHelp";
 export default {
   name: "Vip",
-  data () {
+  data() {
     return {
       vipList: []
     };
@@ -24,7 +24,7 @@ export default {
     CartoonList
   },
   computed: {
-    list () {
+    list() {
       return this.vipList.map(item => {
         return {
           id: item.bookstore_id,
@@ -37,7 +37,7 @@ export default {
     }
   },
   methods: {
-    getVIPList () {
+    getVIPList() {
       getVIPList()
         .then(res => {
           if (res.code === 200) {
@@ -53,7 +53,7 @@ export default {
         });
     }
   },
-  created () {
+  created() {
     this.getVIPList();
   }
 };
