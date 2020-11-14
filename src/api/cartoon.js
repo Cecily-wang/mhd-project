@@ -33,6 +33,7 @@ export const getIndexRecommend = () => {
   });
 };
 
+// 获取分类的类型
 /* https://mhd.zhuishushenqi.com/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app */
 export const getTypes = () => {
   return request({
@@ -46,6 +47,7 @@ export const getTypes = () => {
   });
 };
 
+// 获取分类的类型
 /* https://mhd.zhuishushenqi.com/comic_v2/comicsfilterlist_v2?apptype=8&appversion=1.0&channel=web-app */
 export const getTypesList = (subject, pageno = 1, pagesize = 20) => {
   return request({
@@ -58,6 +60,27 @@ export const getTypesList = (subject, pageno = 1, pagesize = 20) => {
     },
     data: format({
       subject,
+      pageno,
+      pagesize
+    })
+  });
+};
+
+/**
+ * 获取排行的数据
+ * https://mhd.zhuishushenqi.com/comic_v2/comicsrank?apptype=8&appversion=1.0&channel=web-app
+ */
+export const getRankList = (ranktype, pageno = 1, pagesize = 20) => {
+  return request({
+    url: "/api/comic_v2/comicsrank",
+    method: "POST",
+    params: {
+      apptype: 8,
+      appversion: 1.0,
+      channel: "web-app"
+    },
+    data: format({
+      ranktype,
       pageno,
       pagesize
     })

@@ -2,10 +2,7 @@
   <div class="page-classify">
     <normal-header title="分类"></normal-header>
     <div class="classify-main">
-      <header-type
-        :types="types"
-        @click="onChange"
-      ></header-type>
+      <header-type :types="types" @click="onChange"></header-type>
       <cartoon-list :list="list"></cartoon-list>
     </div>
   </div>
@@ -19,7 +16,7 @@ import { getTypes, getTypesList } from "@/api/cartoon";
 import { unformat } from "@/utils/apiHelp";
 export default {
   name: "Classify",
-  data () {
+  data() {
     return {
       types: [],
       cartoonList: []
@@ -31,7 +28,7 @@ export default {
     CartoonList
   },
   computed: {
-    list () {
+    list() {
       return this.cartoonList.map(item => {
         return {
           id: item.bookstore_id,
@@ -44,10 +41,10 @@ export default {
     }
   },
   methods: {
-    onChange (payload) {
-      this.getTypesList(payload.data.targetargument)
+    onChange(payload) {
+      this.getTypesList(payload.data.targetargument);
     },
-    getTypes () {
+    getTypes() {
       return getTypes()
         .then(res => {
           if (res.code === 200) {
@@ -61,20 +58,22 @@ export default {
           alert("网络异常，请稍后重试");
         });
     },
-    getTypesList (subject) {
-      getTypesList(subject).then(res => {
-        if (res.code === 200) {
-          this.cartoonList = JSON.parse(unformat(res.info)).comicsList;
-        } else {
-          alert(res.code_msg);
-        }
-      }).catch(err => {
-        console.log(err);
-        alert("网络异常，请稍后重试");
-      });
+    getTypesList(subject) {
+      getTypesList(subject)
+        .then(res => {
+          if (res.code === 200) {
+            this.cartoonList = JSON.parse(unformat(res.info)).comicsList;
+          } else {
+            alert(res.code_msg);
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          alert("网络异常，请稍后重试");
+        });
     }
   },
-  async created () {
+  async created() {
     await this.getTypes();
     this.getTypesList(this.types[0].targetargument);
   }
