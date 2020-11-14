@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onChange (payload) {
-      console.log(payload);
+      this.getTypesList(payload.data.targetargument)
     },
     getTypes () {
       return getTypes()
@@ -61,8 +61,8 @@ export default {
           alert("网络异常，请稍后重试");
         });
     },
-    getTypesList () {
-      getTypesList(3).then(res => {
+    getTypesList (subject) {
+      getTypesList(subject).then(res => {
         if (res.code === 200) {
           this.cartoonList = JSON.parse(unformat(res.info)).comicsList;
         } else {
@@ -76,8 +76,7 @@ export default {
   },
   async created () {
     await this.getTypes();
-    console.log(this.types);
-    this.getTypesList();
+    this.getTypesList(this.types[0].targetargument);
   }
 };
 </script>
