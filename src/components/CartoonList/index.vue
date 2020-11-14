@@ -1,10 +1,6 @@
 <template>
   <section class="classify-list">
-    <div
-      class="list-item"
-      v-for="(item,index) in list"
-      :key="item.id"
-    >
+    <div class="list-item" v-for="(item, index) in list" :key="item.id">
       <div
         class="item-pic"
         :style="`background-image: url(${item.coverurl});`"
@@ -15,9 +11,11 @@
         <div class="info-fans font-26">人气：{{ item.view | formatYi }}</div>
       </div>
       <div
-        :class="`item-ranking-${(index+1)>3 ? 'other' : index+1}`"
+        :class="`item-ranking-${index + 1 > 3 ? 'other' : index + 1}`"
         v-show="isRanking"
-      >{{(index+1) | indexFliter}}</div>
+      >
+        {{ (index + 1) | indexFliter }}
+      </div>
     </div>
   </section>
 </template>
@@ -28,7 +26,7 @@ export default {
   props: {
     list: {
       type: Array,
-      default () {
+      default() {
         return [];
       }
     },
@@ -38,11 +36,11 @@ export default {
     }
   },
   filters: {
-    indexFliter (value) {
+    indexFliter(value) {
       if (value > 3) {
-        return value
+        return value;
       } else {
-        return ''
+        return "";
       }
     }
   }

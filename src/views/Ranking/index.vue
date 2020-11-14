@@ -2,14 +2,8 @@
   <div class="page-ranking">
     <normal-header title="排行"></normal-header>
     <div class="ranking-main">
-      <header-type
-        :types="types"
-        @click="onChange"
-      ></header-type>
-      <cartoon-list
-        :list="cartoonList"
-        :isRanking="true"
-      ></cartoon-list>
+      <header-type :types="types" @click="onChange"></header-type>
+      <cartoon-list :list="cartoonList" :isRanking="true"></cartoon-list>
     </div>
   </div>
 </template>
@@ -22,7 +16,7 @@ import { unformat } from "@/utils/apiHelp";
 import { getRankList } from "@/api/cartoon";
 export default {
   name: "Ranking",
-  data () {
+  data() {
     return {
       types: [
         { id: 1, description: "热搜榜", ranktype: 6 },
@@ -36,7 +30,7 @@ export default {
     };
   },
   computed: {
-    cartoonList () {
+    cartoonList() {
       return this.rankingList.map(item => {
         return {
           id: item.bigbookid,
@@ -44,8 +38,8 @@ export default {
           name: item.name,
           author: item.author,
           view: item.sales
-        }
-      })
+        };
+      });
     }
   },
   components: {
@@ -54,7 +48,7 @@ export default {
     CartoonList
   },
   methods: {
-    getRankList (ranktype) {
+    getRankList(ranktype) {
       getRankList(ranktype).then(res => {
         if (res.code === 200) {
           const result = JSON.parse(unformat(res.info));
@@ -65,11 +59,11 @@ export default {
         }
       });
     },
-    onChange (payload) {
-      this.getRankList(payload.data.ranktype)
+    onChange(payload) {
+      this.getRankList(payload.data.ranktype);
     }
   },
-  created () {
+  created() {
     this.getRankList(this.types[0].ranktype);
   }
 };
